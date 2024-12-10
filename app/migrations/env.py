@@ -11,6 +11,7 @@ from alembic import context
 sys.path.append(str(Path(__file__).resolve().parent.parent.parent))
 from app.database import Base, DATA_BASE_URL
 from app.author.models import Author
+from app.book.models import Book
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
