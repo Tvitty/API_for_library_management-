@@ -7,10 +7,15 @@ from sqlalchemy import update, insert, select
 
 
 class BorrowService(BaseService):
+    """Сервис для взаимодействия с таблицей 'Выдача'"""
     model = Borrow
 
     @classmethod
     async def add(cls, book_id, reader_name, issue_date):
+        """
+        Метод добавления выдачи с проверкой экземпляров книг
+        с изменением количества экземпляров книг
+        """
         async with async_session_maker() as session:
             get_copies = select(Book.available_copies).filter_by(id=book_id)
             copies = await session.execute(get_copies)
@@ -34,12 +39,11 @@ class BorrowService(BaseService):
 
     @classmethod
     async def patch(cls, borrow_id, return_date):
+        """Метод закрытия выдачи с изменением количества экземпляров книг"""
         async with async_session_maker() as session:
-            issue_closure = update(cls.model).values(return_date=return_date).filter_by(id=borrow_id)\
-            .returning(Borrow.id.__table__.columns)
-            book_return = await session.execute(issue_closure)
+            issue_closure = update(cls.model).values(return_date=return_date).filter_by(id=borrow_id)
+            await session.execute(issue_closure)
             add_copies = update(Book).\
                 values(available_copies=Book.available_copies+1).filter_by(id=Borrow.book_id)
             await session.execute(add_copies)
             await session.commit()
-

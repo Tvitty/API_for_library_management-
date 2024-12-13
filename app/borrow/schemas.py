@@ -3,6 +3,7 @@ from pydantic import BaseModel
 
 
 class SBorrow(BaseModel):
+    """Схема получения выдач"""
     id: int
     book_id: int
     reader_name: str
@@ -15,7 +16,9 @@ class SBorrowAdd(BaseModel):
     issue_date: date
 
 class SBorrowPatch(BaseModel):
+    """Схема создания книги"""
     return_date: date
 
 class SBorrowReturn(BaseModel):
+    """Схема возврата ID выдачи"""
     id: int

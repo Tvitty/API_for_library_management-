@@ -3,6 +3,7 @@ from pydantic import BaseModel
 
 
 class SBook(BaseModel):
+    """Схема получения книг"""
     id: int
     book_title: str
     description: Optional[str] = None
@@ -10,6 +11,7 @@ class SBook(BaseModel):
     available_copies: int
 
 class SBookAdd(BaseModel):
+    """Схема создания книги"""
     book_title: str
     description: Optional[str] = None
     author_id: int

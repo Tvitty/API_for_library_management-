@@ -3,6 +3,7 @@ from app.database import Base
 
 
 class Author(Base):
+    """Модель для таблицы 'Автор'"""
     __tablename__ = "author"
 
     id = Column(Integer, primary_key=True, nullable=False)

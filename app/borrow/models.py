@@ -3,6 +3,7 @@ from app.database import Base
 
 
 class Borrow(Base):
+    """Модель для таблицы 'Выдача'"""
     __tablename__ = "borrow"
 
     id = Column(Integer, primary_key=True, nullable=False)

@@ -2,6 +2,7 @@ from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
+    """Настройки для подключения к БД"""
     DB_HOST: str
     DB_PORT: int
     DB_USER: str
