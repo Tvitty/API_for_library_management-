@@ -25,6 +25,6 @@ INSERT INTO book(book_title, description, author_id, available_copies) VALUES
 
 
 INSERT INTO borrow(book_id, reader_name, issue_date, return_date) VALUES
-(3, 'Иван', '2024-09-16', '2024-09-30'),
-(12, 'Наталия', '2024-12-1', '2024-12-17'),
-(12, 'Петя', '2024-11-29', '2024-12-13');
+(3, 'Иван', '2024-09-16', null),
+(12, 'Наталия', '2024-12-1', null),
+(12, 'Петя', '2024-11-29', null);
