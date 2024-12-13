@@ -9,4 +9,4 @@ class Borrow(Base):
     book_id = Column(ForeignKey("book.id"), nullable=False)
     reader_name = Column(String, nullable=False)
     issue_date = Column(Date, nullable=False)
-    return_date = Column(Date, nullable=False)
+    return_date = Column(Date)
